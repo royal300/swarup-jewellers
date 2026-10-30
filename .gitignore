@@ -1,0 +1,17 @@
+node_modules
+.next
+out
+.env*.local
+.env.production
+.env.deploy
+migration/wp-images
+migration/uploads
+*.tsbuildinfo
+next-env.d.ts
+.deploy
+
+# Tool output: browser logs, review screenshots, decision-page logs
+.playwright-mcp
+.impeccable/review
+.impeccable/questions/*.log
+.DS_Store

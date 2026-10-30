@@ -1,0 +1,301 @@
+:root {
+  --haldi: #e2a426;
+  --haldi-hi: #f2bc45;
+  --haldi-deep: #b9800f;
+  --sindoor: #a3122a;
+  --sindoor-deep: #6e0a1c;
+  --neel: #1c2766;
+  --neel-deep: #10173f;
+  --morpankhi: #0e6b66;
+  --morpankhi-deep: #0a4f4b;
+  --kali: #16100d;
+  --kagoj: #efe2c4;
+  --kagoj-dim: #e2d0a8;
+
+  --f-brush: var(--font-brush), var(--font-anek-bangla), serif;
+  --f-letter: var(--font-anek-latin), var(--font-anek-bangla), system-ui, sans-serif;
+  --f-bn: var(--font-anek-bangla), var(--font-anek-latin), system-ui, sans-serif;
+  --f-data: var(--font-mono), ui-monospace, monospace;
+
+  --gutter: clamp(16px, 4.2vw, 64px);
+  --spine: 0px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-press: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --step--1: clamp(0.82rem, 0.79rem + 0.15vw, 0.9rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.12rem);
+  --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
+  --step-2: clamp(1.5rem, 1.25rem + 1.1vw, 2.2rem);
+  --step-3: clamp(2rem, 1.5rem + 2.4vw, 3.6rem);
+  --step-4: clamp(2.6rem, 1.6rem + 4.6vw, 6rem);
+
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.09 0 0 0 0 0.06 0 0 0 0 0.05 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (min-width: 900px) {
+  :root {
+    --spine: 76px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scrollbar-color: var(--sindoor) var(--kali);
+  scrollbar-width: thin;
+  /* The entry story hides the scrollbar; keeping its gutter stops the page width jumping when it ends. */
+  scrollbar-gutter: stable;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--neel-deep);
+  color: var(--kali);
+  font-family: var(--f-letter);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  font-variation-settings: "wdth" 100;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.22em;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--sindoor);
+  color: var(--kagoj);
+}
+
+:focus-visible {
+  outline: 3px solid var(--haldi-hi);
+  outline-offset: 3px;
+}
+
+.field-haldi :focus-visible,
+.field-kagoj :focus-visible {
+  outline-color: var(--sindoor);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--kali);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--sindoor);
+  border: 2px solid var(--kali);
+}
+
+/* Fields: every region owns one flat letterpress ink. */
+.field-haldi {
+  --field: var(--haldi);
+  --ink: var(--kali);
+  --ink-soft: #4a3210;
+  --accent: var(--sindoor);
+  --misreg-ink: var(--sindoor);
+  background-color: var(--haldi);
+  color: var(--kali);
+}
+.field-sindoor {
+  --field: var(--sindoor);
+  --ink: var(--kagoj);
+  --ink-soft: #f1c9b9;
+  --accent: var(--haldi);
+  --misreg-ink: var(--neel);
+  background-color: var(--sindoor);
+  color: var(--kagoj);
+}
+.field-neel {
+  --field: var(--neel);
+  --ink: var(--kagoj);
+  --ink-soft: #b8bedf;
+  --accent: var(--haldi);
+  --misreg-ink: var(--sindoor);
+  background-color: var(--neel);
+  color: var(--kagoj);
+}
+.field-morpankhi {
+  --field: var(--morpankhi);
+  --ink: var(--kagoj);
+  --ink-soft: #bfe0d6;
+  --accent: var(--haldi);
+  --misreg-ink: var(--neel);
+  background-color: var(--morpankhi);
+  color: var(--kagoj);
+}
+.field-kagoj {
+  --field: var(--kagoj);
+  --ink: var(--kali);
+  --ink-soft: #5b4630;
+  --accent: var(--sindoor);
+  --misreg-ink: var(--haldi);
+  background-color: var(--kagoj);
+  color: var(--kali);
+}
+.field-kali {
+  --field: var(--kali);
+  --ink: var(--kagoj);
+  --ink-soft: #c9b893;
+  --accent: var(--haldi);
+  --misreg-ink: var(--sindoor);
+  background-color: var(--kali);
+  color: var(--kagoj);
+}
+
+/* Paper tooth over every field. */
+.grain {
+  position: relative;
+  isolation: isolate;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  opacity: 0.16;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 0;
+}
+.field-neel.grain::after,
+.field-kali.grain::after,
+.field-morpankhi.grain::after {
+  opacity: 0.22;
+  mix-blend-mode: overlay;
+}
+
+/* Two-ink misregistration for lettering. */
+.misreg {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+.misreg::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: var(--misreg-ink);
+  transform: translate(var(--mx, 0.035em), var(--my, 0.02em));
+  z-index: -1;
+  pointer-events: none;
+  white-space: inherit;
+}
+
+.brush {
+  font-family: var(--f-brush);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.1;
+}
+.bn {
+  font-family: var(--f-bn);
+}
+.data {
+  font-family: var(--f-data);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-variation-settings: "wdth" 85;
+  font-variant-numeric: tabular-nums;
+}
+.condensed {
+  font-variation-settings: "wdth" 75;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.extended {
+  font-variation-settings: "wdth" 125;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
